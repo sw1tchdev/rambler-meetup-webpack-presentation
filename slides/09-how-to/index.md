@@ -5,7 +5,6 @@
 - JS с ES6+ <!-- .element: class="fragment" -->
 - Polyfills <!-- .element: class="fragment" -->
 - Sass <!-- .element: class="fragment" -->
-- Assets <!-- .element: class="fragment" -->
 - Typescript <!-- .element: class="fragment" -->
 - ServiceWorkers <!-- .element: class="fragment" -->
 - Production <!-- .element: class="fragment" -->
@@ -247,25 +246,6 @@ postcss postcss-loader autoprefixer sass sass-loader
             chunkFilename: '[id].css',
         }),
     ],
-}
-</code></pre>
------
-<h2 data-id="code-title">Assets</h2>
-<p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js: </p>
-<pre data-id="code-animation"><code class="javascript" data-trim data-line-numbers="|7|11">module.exports = {
-    // ...
-    module: {
-        rules: [
-            {
-                test: /\.(ico|gif|png|jpg|jpeg)$/i,
-                type: 'asset/resource',
-            },
-            {
-                test: /\.(woff(2)?|eot|ttf|otf|svg)$/,
-                type: 'asset/inline',
-            },
-        ],
-    },
 }
 </code></pre>
 -----

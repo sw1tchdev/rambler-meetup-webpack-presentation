@@ -9,7 +9,7 @@
 <h2 data-id="code-title">Node.js polyfills</h2>
 <p data-id="code-description" class="reveal r-hstack justify-start">Проверить работу на 4 версии без nodejs polyfills</p>
 <p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js:</p>
-<pre data-id="code-animation"><code class="bash" data-trim>module.exports = {
+<pre data-id="code-animation"><code class="javascript" data-trim>module.exports = {
   // ...
   node: {
     Buffer: false,
@@ -23,17 +23,29 @@
 <h2 data-id="code-title">Assets Modules</h2>
 <p class="reveal r-hstack justify-start">Вместо raw-loader, url-loader, file-loader использовать Assets Modules</p>
 <p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js:</p>
-<pre data-id="code-animation"><code class="bash" data-trim>module.exports = {
-  // ...
+<pre data-id="code-animation"><code class="javascript" data-trim data-line-numbers="|5-15|16-24">module.exports = {
+   // ...
    module: {
         rules: [
+            // {
+            //    test: /\.(png|jpg|gif)$/i,
+            //    use: [
+            //      {
+            //        loader: 'url-loader',
+            //        options: {
+            //          limit: 4 * 1024,
+            //        },
+            //      },
+            //    ],
+            // },
             {
-                test: /\.(ico|gif|png|jpg|jpeg)$/i,
-                type: 'asset/resource',
-            },
-            {
-                test: /\.(woff(2)?|eot|ttf|otf|svg)$/,
-                type: 'asset/inline',
+                test: /\.(png|jpg|gif)$/i,
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 4 * 1024 // 4kb
+                    },
+                }.
             },
         ],
    },

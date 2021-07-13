@@ -1,4 +1,3 @@
-<!-- .slide: data-auto-animate -->
 <h2 data-id="webpack-5-title">Webpack 5</h2>
 <ul>
 <li>Webpack 5 вышел 10/10/2020</li>
@@ -6,8 +5,8 @@
 </ul>
 <p class="reveal fragment">🤓&nbsp;Подробнее о нововведениях</p>
 -----
-<!-- .slide: data-menu-title="Важные нововведения 1/2" -->
-<h2  data-id="webpack-5-title">Важные нововведения</h2>
+<!-- .slide: data-auto-animate data-menu-title="Важные нововведения 1/2" -->
+<h2 data-id="webpack-5-title">Важные нововведения</h2>
 <ul>
 <li>Node.js Polyfills убраны (добавляйте самостоятельно)</li>
 <li class="fragment">Нативная поддержка Worker'ов</li>
@@ -17,7 +16,7 @@
 <li class="fragment">Module Federation&nbsp;🪄</li>
 </ul>
 -----
-<!-- .slide: data-menu-title="Важные нововведения 2/2" -->
+<!-- .slide: data-auto-animate data-menu-title="Важные нововведения 2/2" -->
 <h2 data-id="webpack-5-title">Важные нововведения</h2>
 <ul>
 <li>Улучшена работа с target</li>
@@ -65,7 +64,43 @@ module.exports = {
 </code></pre>
 <p class="reveal fragment r-hstack justify-start">🤓&nbsp;Появился с 5.20+</p>
 <p class="reveal fragment r-hstack justify-start">🧐&nbsp;Заменяет&nbsp;<a href="https://github.com/johnagan/clean-webpack-plugin">сlean-webpack-plugin</a></p>
-
+-----
+<h2 data-id="webpack-5-title">Asset Modules</h2>
+<p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js: </p>
+<pre data-id="code-animation"><code class="javascript" data-trim data-line-numbers="|5|11,13|18,20|25,27">module.exports = {
+    // ...
+    output: {
+        // ...
+        assetModuleFilename: 'assets/[hash][ext]',
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+                generator: {
+                  filename: 'assets/images/[name][ext]',
+                },
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/fonts/[hash][ext]',
+                },
+            },
+            {
+                test: /\.(webm|mp4)$/i,
+                type: 'asset/resource',
+                generator: {
+                     filename: 'assets/video/[name][ext]',
+                },
+            },
+        ],
+    },
+}
+</code></pre>
+<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://webpack.js.org/guides/asset-modules/">Webpack.js.org</a></p>
 -----
 <h2 data-id="webpack-5-title">Plugin Hooks</h2>
 <p data-id="webpack-5-filename" class="reveal r-hstack justify-start">plugin.js: </p>
