@@ -1,7 +1,7 @@
 ## Быстрый старт
 #### или часто встречающие кейсы <!-- .element: class="fragment" -->
 [sw1tchdev/meetup-webpack](https://github.com/sw1tchdev/meetup-webpack) - репозиторий со сборкой
-- архитектура конфига <!-- .element: class="fragment" -->
+- Архитектура конфига <!-- .element: class="fragment" -->
 - JS с ES6+ <!-- .element: class="fragment" -->
 - Polyfills <!-- .element: class="fragment" -->
 - Sass <!-- .element: class="fragment" -->
@@ -10,11 +10,27 @@
 - ServiceWorkers <!-- .element: class="fragment" -->
 - Production <!-- .element: class="fragment" -->
 -----
-<!-- .slide: data-auto-animate data-menu-title="архитектура конфига" -->
+<!-- .slide: data-auto-animate data-menu-title="Архитектура конфига 1/4" -->
 <h2 data-id="code-title">Архитектура конфига</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-start">npm install:</p>
 <pre data-id="code-animation"><code class="bash" data-trim>npm i --save-dev webpack-merge
 </code></pre>
+<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://github.com/survivejs/webpack-merge">webpack-merge</a></p>
+-----
+<!-- .slide: data-auto-animate data-menu-title="Архитектура конфига 2/4" -->
+<h2 data-id="code-title">Архитектура конфига</h2>
+<p data-id="code-filename" class="reveal r-hstack justify-center">Было</p>
+<video data-autoplay onloadstart="setTimeout(() => {window.dispatchEvent(new Event('resize'))},200)" style="width: 100%; max-width: 700px; height: auto;" src="slides/09-how-to/before.mp4"></video>
+-----
+<!-- .slide: data-auto-animate data-menu-title="Архитектура конфига 3/4" -->
+<h2 data-id="code-title">Архитектура конфига</h2>
+<p data-id="code-filename" class="reveal r-hstack justify-center">Стало</p>
+<video data-autoplay onloadstart="setTimeout(() => {window.dispatchEvent(new Event('resize'))},200)" style="width: 100%; max-width: 700px; height: auto;" src="slides/09-how-to/after-common.mp4"></video>
+-----
+<!-- .slide: data-auto-animate data-menu-title="Архитектура конфига 4/4" -->
+<h2 data-id="code-title">Архитектура конфига</h2>
+<p data-id="code-filename" class="reveal r-hstack justify-center">Файловая структура</p>
+<video data-autoplay onloadstart="setTimeout(() => {window.dispatchEvent(new Event('resize'))},200)" style="width: 100%; max-width: 700px; height: auto;" src="slides/09-how-to/folder-architecture.mp4"></video>
 -----
 <!-- .slide: data-auto-animate data-menu-title="JS ES6+ 1/2" -->
 <h2 data-id="code-title">JS ES6+</h2>
@@ -192,8 +208,8 @@ module.exports = {
 <pre data-id="code-animation"><code class="bash" data-trim>npm i --save-dev css-loader mini-css-extract-plugin \
 postcss postcss-loader autoprefixer sass sass-loader 
 </code></pre>
-<p class="reveal fragment r-hstack justify-start">🧐 node-sass is deprecated</p>
-<p class="reveal fragment r-hstack justify-start">👆 можно еще использовать style-loader для inline-стилей</p>
+<p class="reveal fragment r-hstack justify-start">🧐&nbsp;node-sass is deprecated</p>
+<p class="reveal fragment r-hstack justify-start">👆&nbsp;можно еще использовать style-loader для inline-стилей</p>
 -----
 <!-- .slide: data-auto-animate data-menu-title="Sass 2/2" -->
 <h2 data-id="code-title">Sass</h2>
@@ -258,8 +274,8 @@ postcss postcss-loader autoprefixer sass sass-loader
 <p data-id="code-filename" class="reveal r-hstack justify-start">npm install:</p>
 <pre data-id="code-animation"><code class="bash" data-trim>npm i --save-dev typescript @babel/preset-typescript fork-ts-checker-webpack-plugin
 </code></pre>
-<p class="reveal fragment r-hstack justify-start">🧐 если надо генерить тайпинги, то ts-loader</p>
-<p class="reveal fragment r-hstack justify-start">👆или использовать tsc&nbsp;<a href="https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html">[typescriptlang.org]</a></p>
+<p class="reveal fragment r-hstack justify-start">🧐&nbsp;если надо генерить тайпинги, то ts-loader</p>
+<p class="reveal fragment r-hstack justify-start">👆&nbsp;или использовать tsc&nbsp;<a href="https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html">[typescriptlang.org]</a></p>
 -----
 <!-- .slide: data-auto-animate data-menu-title="Typescript 2/3" -->
 <h2 data-id="code-title">Typescript</h2>

@@ -52,6 +52,21 @@ module.exports = {
 }
 </code></pre>
 -----
+<h2 data-id="webpack-5-title">Output.clean</h2>
+<p data-id="webpack-5-filename" class="reveal r-hstack justify-start">webpack.config.js: </p>
+<pre data-id="webpack-5-animation"><code class="javascript" data-trim data-line-numbers="|6">const webpack = require('webpack');
+module.exports = {
+    // ...
+    output: {
+        // ...
+        clean: true,
+    },
+}
+</code></pre>
+<p class="reveal fragment r-hstack justify-start">🤓&nbsp;Появился с 5.20+</p>
+<p class="reveal fragment r-hstack justify-start">🧐&nbsp;Заменяет&nbsp;<a href="https://github.com/johnagan/clean-webpack-plugin">сlean-webpack-plugin</a></p>
+
+-----
 <h2 data-id="webpack-5-title">Plugin Hooks</h2>
 <p data-id="webpack-5-filename" class="reveal r-hstack justify-start">plugin.js: </p>
 <pre data-id="webpack-5-animation"><code class="javascript" data-trim data-line-numbers="|4-8|9-19">class CustomPlugin {
