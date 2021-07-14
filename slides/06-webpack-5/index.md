@@ -65,6 +65,20 @@ module.exports = {
 <p class="reveal fragment r-hstack justify-start">🤓&nbsp;Появился с 5.20+</p>
 <p class="reveal fragment r-hstack justify-start">🧐&nbsp;Заменяет&nbsp;<a href="https://github.com/johnagan/clean-webpack-plugin">сlean-webpack-plugin</a></p>
 -----
+<h2 data-id="webpack-5-title">Filesystem Cache</h2>
+<p data-id="webpack-5-filename" class="reveal r-hstack justify-start">webpack.config.js: </p>
+<pre data-id="webpack-5-animation"><code class="javascript" data-trim data-line-numbers="|7">const webpack = require('webpack');
+module.exports = {
+    // ...
+    cache: {
+        // compression: 'gzip',
+        // maxAge: 5184000000,
+        type: 'filesystem',
+    },
+}
+</code></pre>
+<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://webpack.js.org/configuration/cache/">Cache</a></p>
+-----
 <h2 data-id="webpack-5-title">Asset Modules</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js: </p>
 <pre data-id="code-animation"><code class="javascript" data-trim data-line-numbers="|5|11,13|18,20|25,27">module.exports = {
@@ -100,7 +114,7 @@ module.exports = {
     },
 }
 </code></pre>
-<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://webpack.js.org/guides/asset-modules/">Webpack.js.org</a></p>
+<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://webpack.js.org/guides/asset-modules/">Asset Modules</a></p>
 -----
 <h2 data-id="webpack-5-title">Plugin Hooks</h2>
 <p data-id="webpack-5-filename" class="reveal r-hstack justify-start">plugin.js: </p>

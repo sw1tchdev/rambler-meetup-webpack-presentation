@@ -6,6 +6,8 @@
 - Polyfills <!-- .element: class="fragment" -->
 - Sass <!-- .element: class="fragment" -->
 - Typescript <!-- .element: class="fragment" -->
+- React + TS <!-- .element: class="fragment" -->
+- DevServer <!-- .element: class="fragment" -->
 - ServiceWorkers <!-- .element: class="fragment" -->
 - Production <!-- .element: class="fragment" -->
 -----
@@ -322,12 +324,64 @@ isolatedModules - флаг говорит TypeScript, что ваш код мо�
 }
 </code></pre>
 -----
+<!-- .slide: data-menu-title="React + TS 1/2" -->
+<h2 data-id="code-title">React + TS</h2>
+<p data-id="code-filename" class="reveal r-hstack justify-start">npm install:</p>
+<pre data-id="code-animation"><code class="bash" data-trim>npm i --save-dev @babel/preset-react
+</code></pre>
+<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://babeljs.io/docs/en/babel-preset-react">Babeljs docs</a></p>
+-----
+<!-- .slide: data-menu-title="React + TS 2/2" -->
+<h2 data-id="code-title">React + TS</h2>
+<p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js:</p>
+<pre data-id="code-animation"><code class="javascript" data-trim data-line-numbers="|4|9|22">module.exports = {
+    // ...
+    resolve: {
+        extensions: ['.js', '.json', '.ts', '.tsx', '.jsx'],
+    },
+    module: {
+        rules: [
+          {
+            test: /\.(js|ts)(x)?$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/,
+            options: {
+              babelrc: false,
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    useBuiltIns: 'entry',
+                    corejs: '3.8',
+                  },
+                ],
+                '@babel/preset-react',
+                '@babel/preset-typescript',
+              ],
+              plugins: [
+                [
+                  '@babel/plugin-transform-runtime',
+                  {
+                    helpers: true,
+                  },
+                ],
+              ],
+            },
+          },
+        ],
+    },
+    plugins: [
+        new ForkTsCheckerWebpackPlugin()
+    ],
+}
+</code></pre>
+-----
 <!-- .slide: data-menu-title="Dev Server (HMR) 1/2" -->
 <h2 data-id="code-title">Dev Server (HMR)</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-start">npm install:</p>
 <pre data-id="code-animation"><code class="bash" data-trim>npm i --save-dev webpack-dev-server
 </code></pre>
-<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://github.com/webpack/webpack-dev-server/releases/tag/v4.0.0-beta.0">v4.0.0-beta.0</a></p>
+<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://github.com/webpack/webpack-dev-server/releases/tag/v4.0.0-beta.3">v4.0.0-beta.3</a></p>
 
 Note:
 Cервер для разработки, который обновляет браузер или заменяет обновившийся модуль в сборке (HMR) при каждом изменении приложение
@@ -455,3 +509,4 @@ module.exports = {
     ],
 }
 </code></pre>
+<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://webpack.js.org/plugins/split-chunks-plugin/">Chunk Docs</a></p>
