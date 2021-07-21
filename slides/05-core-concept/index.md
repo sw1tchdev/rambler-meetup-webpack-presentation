@@ -7,7 +7,7 @@
 <!-- .slide: data-auto-animate -->
 <h2 data-id="concept-title">Entry / Output</h2>
 <p data-id="concept-filename" class="reveal r-hstack justify-start">webpack.config.js:</p>
-<pre data-id="concept-code"><code class="javascript" data-trim data-line-numbers="3-6|7-10|">const path = require('path');
+<pre data-id="concept-code"><code class="javascript" data-trim data-line-numbers="|3-6|7-10">const path = require('path');
 module.exports = {
     entry: {
         outputName: 'path/to/file.js' // or combine with array of files
@@ -38,11 +38,8 @@ Note:
   }
 }
 </code></pre>
-
-🧐 Порядок выполнения снизу вверх (справа налево) <!-- .element: class="reveal fragment r-hstack justify-start" -->
-
-Note:
-Есть еще pitch фаза https://webpack.js.org/api/loaders/#pitching-loader
+<p class="reveal fragment r-hstack justify-start">🧐 Порядок выполнения снизу вверх (справа налево)</p>
+<p class="reveal fragment r-hstack justify-start">👆 Есть еще&nbsp;<a href="https://webpack.js.org/api/loaders/#pitching-loader">pitch</a>&nbsp;фаза</p>
 -----
 <!-- .slide: data-auto-animate -->
 <h2 data-id="concept-title">Plugins</h2>

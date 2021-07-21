@@ -6,8 +6,8 @@
 - Polyfills <!-- .element: class="fragment" -->
 - Sass <!-- .element: class="fragment" -->
 - Typescript <!-- .element: class="fragment" -->
-- React + TS <!-- .element: class="fragment" -->
 - DevServer <!-- .element: class="fragment" -->
+- React + HMR + Aliases <!-- .element: class="fragment" -->
 - ServiceWorkers <!-- .element: class="fragment" -->
 - Production <!-- .element: class="fragment" -->
 -----
@@ -324,64 +324,12 @@ isolatedModules - флаг говорит TypeScript, что ваш код мо�
 }
 </code></pre>
 -----
-<!-- .slide: data-menu-title="React + TS 1/2" -->
-<h2 data-id="code-title">React + TS</h2>
-<p data-id="code-filename" class="reveal r-hstack justify-start">npm install:</p>
-<pre data-id="code-animation"><code class="bash" data-trim>npm i --save-dev @babel/preset-react
-</code></pre>
-<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://babeljs.io/docs/en/babel-preset-react">Babeljs docs</a></p>
------
-<!-- .slide: data-menu-title="React + TS 2/2" -->
-<h2 data-id="code-title">React + TS</h2>
-<p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js:</p>
-<pre data-id="code-animation"><code class="javascript" data-trim data-line-numbers="|4|9|22">module.exports = {
-    // ...
-    resolve: {
-        extensions: ['.js', '.json', '.ts', '.tsx', '.jsx'],
-    },
-    module: {
-        rules: [
-          {
-            test: /\.(js|ts)(x)?$/,
-            loader: 'babel-loader',
-            exclude: /node_modules/,
-            options: {
-              babelrc: false,
-              presets: [
-                [
-                  '@babel/preset-env',
-                  {
-                    useBuiltIns: 'entry',
-                    corejs: '3.8',
-                  },
-                ],
-                '@babel/preset-react',
-                '@babel/preset-typescript',
-              ],
-              plugins: [
-                [
-                  '@babel/plugin-transform-runtime',
-                  {
-                    helpers: true,
-                  },
-                ],
-              ],
-            },
-          },
-        ],
-    },
-    plugins: [
-        new ForkTsCheckerWebpackPlugin()
-    ],
-}
-</code></pre>
------
 <!-- .slide: data-menu-title="Dev Server (HMR) 1/2" -->
 <h2 data-id="code-title">Dev Server (HMR)</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-start">npm install:</p>
 <pre data-id="code-animation"><code class="bash" data-trim>npm i --save-dev webpack-dev-server
 </code></pre>
-<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://github.com/webpack/webpack-dev-server/releases/tag/v4.0.0-beta.3">v4.0.0-beta.3</a></p>
+<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://github.com/webpack/webpack-dev-server/releases/tag/v4.0.0-rc.0">v4.0.0-rc.0</a></p>
 
 Note:
 Cервер для разработки, который обновляет браузер или заменяет обновившийся модуль в сборке (HMR) при каждом изменении приложение
@@ -407,6 +355,91 @@ Cервер для разработки, который обновляет бр�
 
 Note:
 в 4 версии нормально отображается цель у билда, в 3 версии он определяется как browserslist и не инжектит код
+-----
+<!-- .slide: data-menu-title="React + HMR + Aliases 1/3" -->
+<h2 data-id="code-title">React + HMR + Aliases</h2>
+<p data-id="code-filename" class="reveal r-hstack justify-start">npm install:</p>
+<pre data-id="code-animation"><code class="bash" data-trim>npm i --save-dev @babel/preset-react @pmmmwh/react-refresh-webpack-plugin \
+react-refresh webpack-dev-server@4.0.0-rc.0
+</code></pre>
+<p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://babeljs.io/docs/en/babel-preset-react">Babeljs docs</a></p>
+-----
+<!-- .slide: data-menu-title="React + HMR + Aliases 2/3" -->
+<h2 data-id="code-title">React + HMR + Aliases</h2>
+<p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js:</p>
+<pre data-id="code-animation"><code class="javascript" data-trim data-line-numbers="|3-15|17|18-20|32|42|50-58">module.exports = {
+    // ...
+    devServer: {
+        host: '0.0.0.0',
+        port: 9000,
+        static: {
+          directory: path.join(PROJECT_DIR, 'dist'),
+          publicPath: '/',
+        },
+        allowedHosts: 'all',
+        https: true,
+        hot: true,
+        historyApiFallback: true,
+        client: true,
+    },
+    resolve: {
+        extensions: ['.js', '.json', '.ts', '.tsx', '.jsx'],
+        alias: {
+          Components: path.resolve(PROJECT_DIR, 'src/components'),
+        },
+    },
+    module: {
+        rules: [
+          {
+            test: /\.(js|ts)(x)?$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/,
+            options: {
+              babelrc: false,
+              presets: [
+                '@babel/preset-env',
+                '@babel/preset-react',
+                '@babel/preset-typescript',
+              ],
+              plugins: [
+                [
+                  '@babel/plugin-transform-runtime',
+                  {
+                    helpers: true,
+                  },
+                ],
+                'react-refresh/babel',
+              ],
+            },
+          },
+        ],
+    },
+    plugins: [
+        new ForkTsCheckerWebpackPlugin(),
+        new ReactRefreshWebpackPlugin({
+            // overlay: {
+            //    sockIntegration: 'wds',
+            //    sockHost: 'localhost',
+            //    sockPath: 'ws',
+            //    sockPort: 9000,
+            //    sockProtocol: 'wss',
+            // },
+        })
+    ],
+}
+</code></pre>
+-----
+<!-- .slide: data-menu-title="React + HMR + Aliases 3/3" -->
+<h2 data-id="code-title">React + HMR + Aliases</h2>
+<p data-id="code-filename" class="reveal r-hstack justify-start">tsconfig.json:</p>
+<pre data-id="code-animation"><code class="javascript" data-trim data-line-numbers="">{
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "Components/*": ["src/components/*"]
+    },
+}
+</code></pre>
 -----
 <!-- .slide: data-auto-animate data-menu-title="Service Worker 1/3" -->
 <h2 data-id="code-title">Service Worker</h2>
@@ -438,7 +471,7 @@ module.exports = [
 }
 ]
 </code></pre>
-<p class="reveal fragment r-hstack justify-start">🧐&nbsp;Если multiple targets, то учитывайте CleanWebpackPlugin</p>
+<p class="reveal fragment r-hstack justify-start" style="font-size: 0.85em;">🧐&nbsp;Если multiple targets, то учитывайте CleanWebpackPlugin (output.clean)</p>
 -----
 <!-- .slide: data-menu-title="Service Worker 2/3"-->
 <h2 data-id="code-title">Service Worker</h2>
