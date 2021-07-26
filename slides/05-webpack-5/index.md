@@ -42,11 +42,13 @@
 -----
 <h2 data-id="webpack-5-title">Progress Plugin</h2>
 <p data-id="webpack-5-filename" class="reveal r-hstack justify-start">webpack.config.js: </p>
-<pre data-id="webpack-5-animation"><code class="javascript" data-trim data-line-numbers="|5">const webpack = require('webpack');
+<pre data-id="webpack-5-animation"><code class="javascript" data-trim data-line-numbers="|6">const webpack = require('webpack');
 module.exports = {
     // ...
     plugins: [
-        new webpack.ProgressPlugin() // you can specify percentBy option
+        new webpack.ProgressPlugin({
+            percentBy: 'entries', // you can specify percentBy option
+        }) 
     ],
 }
 </code></pre>
@@ -118,15 +120,15 @@ module.exports = {
 -----
 <h2 data-id="webpack-5-title">Plugin Hooks</h2>
 <p data-id="webpack-5-filename" class="reveal r-hstack justify-start">plugin.js: </p>
-<pre data-id="webpack-5-animation"><code class="javascript" data-trim data-line-numbers="|4-8|9-19">class CustomPlugin {
+<pre data-id="webpack-5-animation"><code class="javascript" data-trim data-line-numbers="|4-8|9-19">class CustomWebpackPlugin {
     //...
     apply(compiler) {
         // webpack v4
-        // compiler.hooks.emit.tap('CustomPlugin', (compilation) => {
+        // compiler.hooks.emit.tap('CustomWebpackPlugin', (compilation) => {
         //    // ...
         //    compilation.assets[filename] = assetToEmit;
         // });
-        compiler.hooks.thisCompilation.tap('CustomPlugin', (compilation) => {
+        compiler.hooks.thisCompilation.tap('CustomWebpackPlugin', (compilation) => {
             compilation.hooks.processAssets.tap(
                 {
                     name: 'CustomPlugin',

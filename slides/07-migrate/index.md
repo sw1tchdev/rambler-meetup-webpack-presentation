@@ -21,7 +21,7 @@
 -----
 <!-- .slide: data-menu-title="Assets Modules" -->
 <h2 data-id="code-title">Assets Modules</h2>
-<p class="reveal r-hstack justify-start">Вместо raw-loader, url-loader, file-loader использовать Assets Modules</p>
+<p class="reveal r-hstack justify-start">Вместо raw-loader, url-loader, file-loader используйте Assets Modules</p>
 <p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js:</p>
 <pre data-id="code-animation"><code class="javascript" data-trim data-line-numbers="|5-15|16-24">module.exports = {
    // ...

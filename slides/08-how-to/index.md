@@ -1,6 +1,5 @@
 ## Быстрый старт
-#### или часто встречающие кейсы <!-- .element: class="fragment" -->
-[sw1tchdev/meetup-webpack](https://github.com/sw1tchdev/meetup-webpack) - репозиторий со сборкой
+[sw1tchdev/meetup-webpack](https://github.com/sw1tchdev/meetup-webpack) - репозиторий со сборкой содержит:
 - Архитектура конфига <!-- .element: class="fragment" -->
 - JS с ES6+ <!-- .element: class="fragment" -->
 - Polyfills <!-- .element: class="fragment" -->
@@ -21,17 +20,17 @@
 <!-- .slide: data-auto-animate data-menu-title="Архитектура конфига 2/4" -->
 <h2 data-id="code-title">Архитектура конфига</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-center">Было</p>
-<video data-autoplay onloadstart="setTimeout(() => {window.dispatchEvent(new Event('resize'))},200)" style="width: 100%; max-width: 700px; height: auto;" src="slides/09-how-to/before.mp4"></video>
+<video data-autoplay onloadstart="setTimeout(() => {window.dispatchEvent(new Event('resize'))},200)" style="width: 100%; max-width: 700px; height: auto;" src="slides/08-how-to/before.mp4"></video>
 -----
 <!-- .slide: data-auto-animate data-menu-title="Архитектура конфига 3/4" -->
 <h2 data-id="code-title">Архитектура конфига</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-center">Стало</p>
-<video data-autoplay onloadstart="setTimeout(() => {window.dispatchEvent(new Event('resize'))},200)" style="width: 100%; max-width: 700px; height: auto;" src="slides/09-how-to/after-common.mp4"></video>
+<video data-autoplay onloadstart="setTimeout(() => {window.dispatchEvent(new Event('resize'))},200)" style="width: 100%; max-width: 700px; height: auto;" src="slides/08-how-to/after-common.mp4"></video>
 -----
 <!-- .slide: data-auto-animate data-menu-title="Архитектура конфига 4/4" -->
 <h2 data-id="code-title">Архитектура конфига</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-center">Файловая структура</p>
-<video data-autoplay onloadstart="setTimeout(() => {window.dispatchEvent(new Event('resize'))},200)" style="width: 100%; max-width: 700px; height: auto;" src="slides/09-how-to/folder-architecture.mp4"></video>
+<video data-autoplay onloadstart="setTimeout(() => {window.dispatchEvent(new Event('resize'))},200)" style="width: 100%; max-width: 700px; height: auto;" src="slides/08-how-to/folder-architecture.mp4"></video>
 -----
 <!-- .slide: data-auto-animate data-menu-title="JS ES6+ 1/2" -->
 <h2 data-id="code-title">JS ES6+</h2>
@@ -111,7 +110,7 @@ Note:
 
 Note:
 Firefox ESR - enterprise
-больше 0.5% пользователей
+больше 0.5% пользователей у браузера
 -----
 <!-- .slide: data-auto-animate data-menu-title="Polyfills 3/5" -->
 <h2 data-id="code-title">Polyfills</h2>
@@ -158,7 +157,7 @@ Firefox ESR - enterprise
 import 'regenerator-runtime/runtime';
 </code></pre>
 -----
-<!-- .slide: data-auto-animate data-menu-title="Polyfills 5/5" -->
+<!-- .slide: data-auto-animate data-menu-title="Polyfills (with usage) 5/5" -->
 <h2 data-id="code-title">Polyfills (with usage)</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js: </p>
 <pre data-id="code-animation"><code class="javascript" data-trim data-line-numbers="|22|9-14|17">const { dependencies } = require('./package.json');
@@ -211,6 +210,9 @@ postcss postcss-loader autoprefixer sass sass-loader
 </code></pre>
 <p class="reveal fragment r-hstack justify-start">🧐&nbsp;node-sass is deprecated</p>
 <p class="reveal fragment r-hstack justify-start">👆&nbsp;можно еще использовать style-loader для inline-стилей</p>
+
+Note:
+css-loader для обработки @import and url()
 -----
 <!-- .slide: data-auto-animate data-menu-title="Sass 2/2" -->
 <h2 data-id="code-title">Sass</h2>
@@ -257,25 +259,25 @@ postcss postcss-loader autoprefixer sass sass-loader
 <pre data-id="code-animation"><code class="bash" data-trim>npm i --save-dev typescript @babel/preset-typescript fork-ts-checker-webpack-plugin
 </code></pre>
 <p class="reveal fragment r-hstack justify-start">🧐&nbsp;если надо генерить тайпинги, то ts-loader</p>
-<p class="reveal fragment r-hstack justify-start">👆&nbsp;или использовать tsc&nbsp;<a href="https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html">[typescriptlang.org]</a></p>
+<p class="reveal fragment r-hstack justify-start">👆&nbsp;или использовать tsc&nbsp;<a href="https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html">typescriptlang.org</a></p>
 -----
 <!-- .slide: data-auto-animate data-menu-title="Typescript 2/3" -->
 <h2 data-id="code-title">Typescript</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-start">tsconfig.json:</p>
 <pre data-id="code-animation"><code class="json" data-trim>{
       "compilerOptions": {
+        // ...
         "target": "ES2020",         /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
         "module": "es2020",         /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
-        "declaration": true,        /* Generates corresponding '.d.ts' file. */
-        "declarationDir": "dist",   /* Generates corresponding '.d.ts' file. */
         "strict": true,             /* Enable all strict type-checking options. */
         "esModuleInterop": true,    /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
         "isolatedModules": true,
         "skipLibCheck": true,       /* Skip type checking of declaration files. */
-        "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
     }
 }
 </code></pre>
+
+<p class="reveal fragment r-hstack justify-start">👆&nbsp;<a href="https://www.typescriptlang.org/tsconfig#isolatedModules">IsolatedModules</a></p>
 
 Note:
 isolatedModules - флаг говорит TypeScript, что ваш код может быть неправильно интерпретирован транспилингом, которым преобразовывает файлы одиночно.

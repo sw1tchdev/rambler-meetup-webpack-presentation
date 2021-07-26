@@ -12,7 +12,6 @@ Embed - встраиваемое приложение на площадки кл
 ## Что будет в докладе?
 1. Что такое бандлер 
 1. Где используется <!-- .element: class="fragment" -->
-1. Альтернативные бандлеры <!-- .element: class="fragment" -->
 1. Основные принципы <!-- .element: class="fragment" -->
 1. Нововведения 5 версии <!-- .element: class="fragment" -->
 1. Module Federation <!-- .element: class="fragment" -->

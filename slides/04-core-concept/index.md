@@ -39,7 +39,6 @@ Note:
 }
 </code></pre>
 <p class="reveal fragment r-hstack justify-start">🧐 Порядок выполнения снизу вверх (справа налево)</p>
-<p class="reveal fragment r-hstack justify-start">👆 Есть еще&nbsp;<a href="https://webpack.js.org/api/loaders/#pitching-loader">pitch</a>&nbsp;фаза</p>
 -----
 <!-- .slide: data-auto-animate -->
 <h2 data-id="concept-title">Plugins</h2>
