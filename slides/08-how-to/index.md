@@ -339,18 +339,17 @@ Cервер для разработки, который обновляет бр�
 <!-- .slide: data-menu-title="Dev Server (HMR) 2/2" -->
 <h2 data-id="code-title">Dev Server (HMR)</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js:</p>
-<pre data-id="code-animation"><code class="javascript" data-trim data-line-numbers="|9-10|11|12">module.exports = {
+<pre data-id="code-animation"><code class="javascript" data-trim data-line-numbers="|9-10|11">module.exports = {
     //...
     devServer: {
           host: '0.0.0.0',
           port: 9000,
           publicPath: '/',
-          contentBase: path.join(PROJECT_DIR, 'dist'),
-          disableHostCheck: true,
-          watchContentBase: true, // watching in build folder (for example html)
-          liveReload: true,
-          // hot: true,
-          injectClient: true // must specify if browserslist config exists and webpack target not specified
+          contentBase: path.join(PROJECT_DIR, 'public'),
+          disableHostCheck: true, // отключаем проверку host, c которого идет обращение к devServer
+          liveReload: true, // включить перезагрузку
+          // hot: true, /* HMR */
+          injectClient: true // в true если browserslist и webpack target не установлен
     },
 }
 </code></pre>
@@ -375,10 +374,10 @@ react-refresh webpack-dev-server@4.0.0-rc.0
         host: '0.0.0.0',
         port: 9000,
         static: {
-          directory: path.join(PROJECT_DIR, 'dist'),
+          directory: path.join(PROJECT_DIR, 'public'),
           publicPath: '/',
         },
-        allowedHosts: 'all',
+        allowedHosts: 'all', // с каких хостов можно обращаться к devServer
         https: true,
         hot: true,
         historyApiFallback: true,
@@ -446,7 +445,7 @@ react-refresh webpack-dev-server@4.0.0-rc.0
 <!-- .slide: data-auto-animate data-menu-title="Service Worker 1/3" -->
 <h2 data-id="code-title">Service Worker</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js:</p>
-<pre data-id="code-animation"><code class="javascript" data-trim data-trim data-line-numbers="|16-24|13">
+<pre data-id="code-animation"><code class="javascript" data-trim data-trim data-line-numbers="|15-23|12">
 // multiple targets
 module.exports = [
 {
@@ -455,8 +454,7 @@ module.exports = [
           host: '0.0.0.0',
           port: 9000,
           publicPath: '/',
-          contentBase: path.join(PROJECT_DIR, 'dist'),
-          watchContentBase: true,
+          contentBase: path.join(PROJECT_DIR, 'public'),
           disableHostCheck: true,
           liveReload: true, // or hot
           injectClient: (compilerConfig) => compilerConfig.target === 'browserslist', // or compare by compilerConfig.entry
@@ -476,16 +474,15 @@ module.exports = [
 <p class="reveal fragment r-hstack justify-start" style="font-size: 0.85em;">🧐&nbsp;Если multiple targets, то учитывайте CleanWebpackPlugin (output.clean)</p>
 -----
 <!-- .slide: data-menu-title="Service Worker 2/3"-->
-<h2 data-id="code-title">Service Worker</h2>
+<h2 data-id="code-title">Service Worker (Webpack 5)</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-start">webpack.config.js:</p>
-<pre data-id="code-animation"><code class="javascript" data-trim data-trim data-line-numbers="10">
+<pre data-id="code-animation"><code class="javascript" data-trim data-trim data-line-numbers="9">
 module.exports = {
     devServer: {
           host: '0.0.0.0',
           port: 9000,
           publicPath: '/',
           contentBase: path.join(PROJECT_DIR, 'dist'),
-          watchContentBase: true,
           disableHostCheck: true,
           liveReload: true, // or hot
           injectClient: true
@@ -494,12 +491,12 @@ module.exports = {
 </code></pre>
 -----
 <!-- .slide: data-menu-title="Service Worker 3/3"-->
-<h2 data-id="code-title">Service Worker</h2>
+<h2 data-id="code-title">Service Worker (Webpack 5)</h2>
 <p data-id="code-filename" class="reveal r-hstack justify-start">entrypoint.js:</p>
 <pre data-id="code-animation"><code class="javascript" data-trim data-trim>
 navigator.serviceWorker.register(new URL('./sw.js', import.meta.url))
 </code></pre>
-<p class="reveal fragment r-hstack justify-start">😎&nbsp;Webpack сам создаст новый entrypoint для SW</p>
+<p class="reveal fragment r-hstack justify-start">😎&nbsp;Webpack сам создаст новый entrypoint (chunk) для SW</p>
 -----
 <!-- .slide: data-auto-animate data-menu-title="Production 1/2" -->
 <h2 data-id="code-title">Production</h2>

@@ -5,23 +5,16 @@
 </ul>
 <p class="reveal fragment">🤓&nbsp;Подробнее о нововведениях</p>
 -----
-<!-- .slide: data-auto-animate data-menu-title="Важные нововведения 1/2" -->
+<!-- .slide: data-auto-animate data-menu-title="Важные нововведения" -->
 <h2 data-id="webpack-5-title">Важные нововведения</h2>
 <ul>
 <li class="fragment">Нативная поддержка Worker'ов</li>
 <li class="fragment">Async Modules</li>
 <li class="fragment">Asset Modules</li>
 <li class="fragment">Progress Plugin&nbsp;😃</li>
-<li class="fragment">Module Federation&nbsp;🪄</li>
-</ul>
------
-<!-- .slide: data-auto-animate data-menu-title="Важные нововведения 2/2" -->
-<h2 data-id="webpack-5-title">Важные нововведения</h2>
-<ul>
-<li>Улучшена работа с target</li>
 <li class="fragment">Улучшенный Tree-Shaking</li>
-<li class="fragment">Изменилась работа с хуками (касается плагинов)</li>
 <li class="fragment">Filesystem Cache</li>
+<li class="fragment">Module Federation&nbsp;🪄</li>
 </ul>
 -----
 <h2 data-id="webpack-5-title">Workers</h2>
@@ -116,28 +109,3 @@ module.exports = {
 }
 </code></pre>
 <p class="reveal fragment r-hstack justify-start">🧐&nbsp;<a href="https://webpack.js.org/guides/asset-modules/">Asset Modules</a></p>
------
-<h2 data-id="webpack-5-title">Plugin Hooks</h2>
-<p data-id="webpack-5-filename" class="reveal r-hstack justify-start">plugin.js: </p>
-<pre data-id="webpack-5-animation"><code class="javascript" data-trim data-line-numbers="|4-8|9-19">class CustomWebpackPlugin {
-    //...
-    apply(compiler) {
-        // webpack v4
-        // compiler.hooks.emit.tap('CustomWebpackPlugin', (compilation) => {
-        //    // ...
-        //    compilation.assets[filename] = assetToEmit;
-        // });
-        compiler.hooks.thisCompilation.tap('CustomWebpackPlugin', (compilation) => {
-            compilation.hooks.processAssets.tap(
-                {
-                    name: 'CustomPlugin',
-                    stage: Compilation.PROCESS_ASSETS_STAGE_ADDITIONS,
-                },
-                (assets) => {
-                    compilation.assets[filename] = assetToEmit;
-                }
-            );
-        });
-    }
-}
-</code></pre>

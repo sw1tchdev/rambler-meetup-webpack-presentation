@@ -43,13 +43,12 @@ Note:
 <!-- .slide: data-auto-animate -->
 <h2 data-id="concept-title">Plugins</h2>
 <p data-id="concept-filename" class="reveal r-hstack justify-start">webpack.config.js:</p>
-<pre data-id="concept-code"><code class="javascript" data-trim data-line-numbers="|6-9">const HtmlWebpackPlugin = require('html-webpack-plugin');
+<pre data-id="concept-code"><code class="javascript" data-trim data-line-numbers="|6-8">const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 module.exports = {
     // ...
     plugins: [
-        new webpack.ProgressPlugin(),
         new HtmlWebpackPlugin({template: './src/index.html'})
     ]
 }
