@@ -8,7 +8,6 @@
 <!-- .slide: data-auto-animate data-menu-title="Важные нововведения 1/2" -->
 <h2 data-id="webpack-5-title">Важные нововведения</h2>
 <ul>
-<li>Node.js Polyfills убраны (добавляйте самостоятельно)</li>
 <li class="fragment">Нативная поддержка Worker'ов</li>
 <li class="fragment">Async Modules</li>
 <li class="fragment">Asset Modules</li>
