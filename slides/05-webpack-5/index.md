@@ -8,7 +8,7 @@
 <!-- .slide: data-auto-animate data-menu-title="Важные нововведения" -->
 <h2 data-id="webpack-5-title">Важные нововведения</h2>
 <ul>
-<li class="fragment">Нативная поддержка Worker'ов</li>
+<li>Нативная поддержка Worker'ов</li>
 <li class="fragment">Async Modules</li>
 <li class="fragment">Asset Modules</li>
 <li class="fragment">Progress Plugin&nbsp;😃</li>
